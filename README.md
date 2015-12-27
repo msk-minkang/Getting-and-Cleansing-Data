@@ -9,3 +9,11 @@ The function returns the average values of mean and standard deviation for each 
 ### Input
 The input needs to be the directory where the original zip file is extracted.
 
+Example: 
+source("run_analysis.R")
+
+main_dir <- "Project/getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/"
+
+run_analysis(main_dir)
+
+

@@ -1,6 +1,4 @@
 
-#main_dir <- "Project/getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/"
-
 run_analysis <- function(main_dir) {
   
   
