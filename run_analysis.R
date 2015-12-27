@@ -1,7 +1,6 @@
 
 run_analysis <- function(main_dir) {
-  
-  
+    
   main_dir <- gsub("\\/$", "", main_dir)
   
   ### File Names
@@ -16,8 +15,6 @@ run_analysis <- function(main_dir) {
   filename_features <- paste(main_dir, "/features.txt", sep = "")
   filename_activity_lab <- paste(main_dir, "/activity_labels.txt", sep = "")
   
-  
-  
   ### Import Txt files
   test <- read.table(file = filename_test)
   test_lab <- read.table(file = filename_test_lab)
@@ -26,7 +23,6 @@ run_analysis <- function(main_dir) {
   train <- read.table(file = filename_train)
   train_lab <- read.table(file = filename_train_lab)
   train_sub <- read.table(file = filename_train_sub)
-  
   
   features <- read.table(file = filename_features)
   activity_lab <- read.table(file = filename_activity_lab)
@@ -43,10 +39,12 @@ run_analysis <- function(main_dir) {
   test$subject <- test_sub$V1
   train$subject <- train_sub$V1
   
+  
+  ### Merge Test and Train Data
   merged_df <- rbind(test, train)
   merged_df$activity_lab <- activity_lab[match(merged_df$activity_cd, activity_lab$V1), "V2"]
   
-  ### Only extract coluns with mean() and std()
+  ### Only extract columns with mean() and std()
   extract_cols <- names(merged_df)[grepl("(mean|std)\\(\\)", names(merged_df))]
   extract_df <- merged_df[, c("subject", "activity_lab", extract_cols)]
   
